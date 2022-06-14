@@ -1,0 +1,40 @@
+---
+
+- name: Add Traefik repository
+  kubernetes.core.helm_repository:
+    name: '{{ traefik_repository.name }}'
+    repo_url: '{{ traefik_repository.url }}'
+
+- name: Install Traefik
+  kubernetes.core.helm:
+    name: traefik
+    chart_ref: traefik/traefik
+    chart_version: '{{ traefik_repository.version }}'
+    release_namespace: '{{ traefik_namespace }}'
+    create_namespace: true
+    update_repo_cache: true
+    values: "{{ lookup('template', 'chart-values.yaml.j2') | from_yaml }}"
+
+- name: Create default certificate
+  kubernetes.core.k8s:
+    template: '{{ item }}'
+  with_items:
+    - default-certificate.yaml.j2
+    - default-tls-store.yaml.j2
+
+- name: Enable Traefik dashboard
+  kubernetes.core.k8s:
+    template: '{{ item }}'
+  with_items:
+    - dashboard-auth.yaml.j2
+    - dashboard-basicauth.yaml.j2
+    - dashboard-ingressroute.yaml.j2
+
+- name: Get Traefik ingress address
+  ansible.builtin.shell:
+    cmd: >-
+      kubectl describe service -n {{ traefik_namespace }} |
+      grep 'LoadBalancer Ingress' | awk '{print $3}'
+  check_mode: false
+  changed_when: false
+  register: traefik_ingress_address

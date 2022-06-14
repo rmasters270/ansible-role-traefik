@@ -1,0 +1,9 @@
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: traefik-dashboard-auth
+  namespace: {{ traefik_namespace }}
+
+data:
+  users: {{ (traefik_web_user + ':' + (traefik_web_password | password_hash('md5', traefik_web_salt | random(seed=inventory_hostname)))) | b64encode }}

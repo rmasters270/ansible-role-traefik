@@ -1,0 +1,16 @@
+galaxy_info:
+  author: rmasters270
+  role_name: traefik
+  description: Install Traefik
+  company: none
+  license: MIT
+  min_ansible_version: '2.1'
+
+  platforms:
+    - name: Ubuntu
+      versions:
+        - focal
+
+  galaxy_tags: [kubernetes, k3s, helm, traefik, ingress, loadbalancer, reverseproxy]
+
+dependencies: []
