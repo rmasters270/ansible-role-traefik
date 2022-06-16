@@ -6,7 +6,7 @@ metadata:
 spec:
   secretName: default-certificate
   issuerRef:
-    name: {{ traefik_default_cert.issuer }}
-    kind: {{ traefik_default_cert.issuer_kind }}
+    name: {{ traefik_default_cert_issuer }}
+    kind: {{ traefik_default_cert_issuer_kind }}
   dnsNames:
-    - "{{ traefik_default_cert.dnsname }}"
+    - "{{ traefik_default_cert_dnsname }}"

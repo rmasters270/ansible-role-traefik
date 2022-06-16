@@ -1,9 +1,8 @@
 ---
 
-traefik_repository:
-  name: traefik
-  url: https://helm.traefik.io/traefik
-  version: 10.20.1
+traefik_repo_name: traefik
+traefik_repo_url: https://helm.traefik.io/traefik
+traefik_repo_version: 10.20.1
 
 # By default, the level is set to ERROR. Alternative logging levels are:
 #  DEBUG, PANIC, FATAL, ERROR, WARN, and INFO.
@@ -20,7 +19,6 @@ traefik_web_user: kangoroo
 traefik_web_password: jack
 traefik_web_salt: 65534
 
-traefik_default_cert:
-  issuer: selfsigned-issuer
-  issuer_kind: ClusterIssuer
-  dnsname: '*.{{ ansible_domain }}'
+traefik_default_cert_issuer: selfsigned-issuer
+traefik_default_cert_issuer_kind: ClusterIssuer
+traefik_default_cert_dnsname: '*.{{ ansible_domain }}'

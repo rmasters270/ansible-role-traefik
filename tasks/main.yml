@@ -2,14 +2,14 @@
 
 - name: Add Traefik repository
   kubernetes.core.helm_repository:
-    name: '{{ traefik_repository.name }}'
-    repo_url: '{{ traefik_repository.url }}'
+    name: '{{ traefik_repo_name }}'
+    repo_url: '{{ traefik_repo_url }}'
 
 - name: Install Traefik
   kubernetes.core.helm:
     name: traefik
     chart_ref: traefik/traefik
-    chart_version: '{{ traefik_repository.version }}'
+    chart_version: '{{ traefik_repo_version }}'
     release_namespace: '{{ traefik_namespace }}'
     create_namespace: true
     update_repo_cache: true
