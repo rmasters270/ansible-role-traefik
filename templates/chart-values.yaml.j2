@@ -30,3 +30,10 @@ service:
 {% endif %}
   loadBalancerSourceRanges: []
   externalIPs: []
+
+providers:
+  kubernetesCRD:
+    allowExternalNameServices: true
+
+  kubernetesIngress:
+    allowExternalNameServices: true
