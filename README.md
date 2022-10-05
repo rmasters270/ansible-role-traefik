@@ -2,6 +2,8 @@
 
 Install Traefik on a Kubernetes cluster.
 
+[![Ansible Galaxy](https://img.shields.io/badge/ansible--galaxy-traefik-blue.svg)](https://galaxy.ansible.com/rmasters270/traefik)
+
 ## Requirements
 
 ### Certificate Issuer
@@ -26,90 +28,22 @@ The host must have the Helm package manager installed.
 
 ## Role Variables
 
-### traefik_namespace
-
-Change the Kubernetes namespace for Traefik.
-
-default: `traefik`
-
-### traefik_hostname: 'traefik.{{ ansible_domain }}'
-
-Address used to access the dashboard. You should also have a DNS entry pointing to this hostname.
-
-### traefik_pods
-
-Change the number of pods running Traefik.
-
-default: `1`
-
-### traefik_log_level
-
-The value does not need to be defined in the playbook unless an alternative value is used.
-
-Alternative logging levels are:
-DEBUG, PANIC, FATAL, ERROR, WARN, and INFO.
-
-default: `error`
-
-### traefik_loadbalancer_ip
-
-Explicitly define the loadbalancer address for ingress.  If left undefined it will request the first available address.
-
-### traefik_web_user
-
-Basic auth user to gain access to the Traefik dashboard.
-
-default: `kangoroo`
-
-### traefik_web_password
-
-Password for the account defined in `traefik_web_user`.
-
-default: `jack`
-
-### traefik_web_salt: 65534
-
-Salt used to secure `traefik_web_password`.
-
-default: `65534`
-
-### traefik_default_cert_issuer
-
-The Kubernetes name for the certificate issuer used to generate the default certificate in Traefik.
-
-default: `selfsigned-issuer`
-
-### traefik_default_cert_issuer_kind
-
-The kind Kubernetes certificate issuer. Used to issue the default certificate. Acceptable values: Issuer, ClusterIssuer.
-
-default: `ClusterIssuer`
-
-### traefik_default_cert_dnsname
-
-The DNS name, typically a wildcard, issued to the default certificate.
-
-default: `*.{{ ansible_domain }}`
-
-### traefik_repo_name: traefik
-
-Name of the Helm repository.
-
-default: `traefik`
-
-### traefik_repo_url
-
-Url pointing to the Helm repository.
-
-default: `https://helm.traefik.io/traefik`
-
-### traefik_repo_version
-
-Chart version in the repository.
-
-The default value is pinned to the latest version at the time of writing.  Use `helm search repo traefik` to list all versions of the chart.
-
-default: `10.20.1`
+| Variable                          | Required | Default                            | Comments                                    |
+|-----------------------------------|----------|------------------------------------|---------------------------------------------|
+| traefik_namespace                 | yes      | traefik                            | Kubernetes namespace                        |
+| traefik_repo_name                 | yes      | traefik                            | Helm repository name                        |
+| traefik_repo_url                  | yes      | <https://helm.traefik.io/traefik>  | Helm repository URL                         |
+| traefik_repo_version              | yes      | 10.20.1                            | Helm chart version                          |
+| traefik_pods                      | no       | 1                                  | Number of pods                              |
+| traefik_hostname                  | yes      | traefik.{{ ansible_domain }}       | Dashboard address                           |
+| traefik_loadbalancer_ip           | no       | First available IP address         | Loadbalancer address for ingress            |
+| traefik_log_level                 | no       | error                              | debug, panic, fatal, error, warn, info      |
+| traefik_web_user                  | yes      | kangoroo                           | Basic auth user for dashboard               |
+| traefik_web_password              | yes      | jack                               | Basic auth password                         |
+| traefik_web_salt                  | yes      | 65534                              | Salt used to secure the password            |
+| traefik_default_cert_issuer       | yes      | selfsigned-issuer                  | Default certificate issuer                  |
+| traefik_default_cert_issuer_kind  | yes      | ClusterIssuer                      | Kind of certificate issuer (e.g. Issuer, ClusterIssuer) for the default certificate. |
+| traefik_default_cert_dnsname      | yes      | *.{{ ansible_domain }}             | DNS name issued to the default certificate  |
 
 ## Dependencies
 
@@ -124,6 +58,7 @@ Setup `kube config` for the user account and host.
 
   vars:
     traefik_pods: 2
+    traefik_default_cert_issuer: letsencrypt-staging
 
   roles:
     - rmasters270.helm
