@@ -1,20 +1,15 @@
 ---
 
+traefik_namespace: traefikf
 traefik_repo_name: traefik
 traefik_repo_url: https://helm.traefik.io/traefik
 traefik_repo_version: 10.20.1
 
-# By default, the level is set to ERROR. Alternative logging levels are:
-#  DEBUG, PANIC, FATAL, ERROR, WARN, and INFO.
-# traefik_log_level: debug
-
-# Explicitly define LoadBalancer ip address
-#   if none is defined the first available ip address will be assigned.
-# traefik_loadbalancer_ip: 169.254.0.2
-
 traefik_pods: 1
-traefik_namespace: traefik
 traefik_hostname: 'traefik.{{ ansible_domain }}'
+# traefik_loadbalancer_ip: 169.254.0.2
+traefik_log_level: error
+
 traefik_web_user: kangoroo
 traefik_web_password: jack
 traefik_web_salt: 65534
