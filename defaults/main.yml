@@ -1,6 +1,6 @@
 ---
 
-traefik_namespace: traefikf
+traefik_namespace: traefik
 traefik_repo_name: traefik
 traefik_repo_url: https://helm.traefik.io/traefik
 traefik_repo_version: 10.20.1
