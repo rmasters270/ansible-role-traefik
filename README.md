@@ -44,6 +44,7 @@ The host must have the Helm package manager installed.
 | traefik_default_cert_issuer       | yes      | selfsigned-issuer                  | Default certificate issuer                  |
 | traefik_default_cert_issuer_kind  | yes      | ClusterIssuer                      | Kind of certificate issuer (e.g. Issuer, ClusterIssuer) for the default certificate. |
 | traefik_default_cert_dnsname      | yes      | *.{{ ansible_domain }}             | DNS name issued to the default certificate  |
+| traefik_vpn_port                  | no       | 0                                  | Expose VPN port on the given UDP port       |
 
 ## Dependencies
 

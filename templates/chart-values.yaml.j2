@@ -11,6 +11,12 @@ deployment:
 ports:
   web:
     redirectTo: websecure
+{% if traefik_vpn_port | default(0, true) > 0 %}
+  vpn:
+    port: {{ traefik_vpn_port | int }}
+    protocol: UDP
+    expose: true
+{% endif %}
 
 ingressRoute:
   dashboard:
