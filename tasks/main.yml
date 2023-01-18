@@ -38,3 +38,7 @@
   check_mode: false
   changed_when: false
   register: traefik_ingress_address
+
+- name: Set Traefik ingress address
+  ansible.builtin.set_fact:
+    traefik_ingress_address: '{{ traefik_ingress_address.stdout }}'
