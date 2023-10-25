@@ -33,8 +33,9 @@
 - name: Get Traefik ingress address
   ansible.builtin.shell:
     cmd: >-
-      kubectl describe service -n {{ traefik_namespace }} |
-      grep 'LoadBalancer Ingress' | awk '{print $3}'
+      set -o pipefail &&
+      kubectl -n {{ traefik_namespace }} get service |
+      grep '80:[0-9.]*/TCP,443:[0-9.]*/TCP' | awk '{ print $4 }'
   check_mode: false
   changed_when: false
   register: traefik_ingress_address
