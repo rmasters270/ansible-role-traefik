@@ -2,7 +2,7 @@
 
 Install Traefik on a Kubernetes cluster.
 
-[![Ansible Galaxy](https://img.shields.io/badge/ansible--galaxy-traefik-blue.svg)](https://galaxy.ansible.com/rmasters270/traefik)
+[![Ansible Galaxy](https://img.shields.io/badge/ansible--galaxy-traefik-blue.svg)](https://galaxy.ansible.com/ui/standalone/roles/rmasters270/traefik)
 
 ## Requirements
 
@@ -33,7 +33,7 @@ The host must have the Helm package manager installed.
 | traefik_namespace                | yes      | traefik                           | Kubernetes namespace                                                                 |
 | traefik_repo_name                | yes      | traefik                           | Helm repository name                                                                 |
 | traefik_repo_url                 | yes      | <https://helm.traefik.io/traefik> | Helm repository URL                                                                  |
-| traefik_repo_version             | yes      | 20.5.0                            | [Helm chart version]                                                                   |
+| traefik_repo_version             | yes      | 20.5.0                            | [Helm chart version](https://github.com/traefik/traefik-helm-chart/releases)                                                                   |
 | traefik_pods                     | no       | 1                                 | Number of pods                                                                       |
 | traefik_hostname                 | yes      | traefik.{{ ansible_domain }}      | Dashboard address                                                                    |
 | traefik_loadbalancer_ip          | no       | First available IP address        | Loadbalancer address for ingress                                                     |
