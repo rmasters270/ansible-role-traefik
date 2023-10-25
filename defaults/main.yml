@@ -3,7 +3,7 @@
 traefik_namespace: traefik
 traefik_repo_name: traefik
 traefik_repo_url: https://helm.traefik.io/traefik
-traefik_repo_version: 10.20.1
+traefik_repo_version: 20.5.0
 
 traefik_pods: 1
 traefik_hostname: 'traefik.{{ ansible_domain }}'

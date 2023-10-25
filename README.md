@@ -28,23 +28,23 @@ The host must have the Helm package manager installed.
 
 ## Role Variables
 
-| Variable                          | Required | Default                            | Comments                                    |
-|-----------------------------------|----------|------------------------------------|---------------------------------------------|
-| traefik_namespace                 | yes      | traefik                            | Kubernetes namespace                        |
-| traefik_repo_name                 | yes      | traefik                            | Helm repository name                        |
-| traefik_repo_url                  | yes      | <https://helm.traefik.io/traefik>  | Helm repository URL                         |
-| traefik_repo_version              | yes      | 10.20.1                            | Helm chart version                          |
-| traefik_pods                      | no       | 1                                  | Number of pods                              |
-| traefik_hostname                  | yes      | traefik.{{ ansible_domain }}       | Dashboard address                           |
-| traefik_loadbalancer_ip           | no       | First available IP address         | Loadbalancer address for ingress            |
-| traefik_log_level                 | no       | error                              | debug, panic, fatal, error, warn, info      |
-| traefik_web_user                  | yes      | kangoroo                           | Basic auth user for dashboard               |
-| traefik_web_password              | yes      | jack                               | Basic auth password                         |
-| traefik_web_salt                  | yes      | 65534                              | Salt used to secure the password            |
-| traefik_default_cert_issuer       | yes      | selfsigned-issuer                  | Default certificate issuer                  |
-| traefik_default_cert_issuer_kind  | yes      | ClusterIssuer                      | Kind of certificate issuer (e.g. Issuer, ClusterIssuer) for the default certificate. |
-| traefik_default_cert_dnsname      | yes      | *.{{ ansible_domain }}             | DNS name issued to the default certificate  |
-| traefik_vpn_port                  | no       | 0                                  | Expose VPN port on the given UDP port       |
+| Variable                         | Required | Default                           | Comments                                                                             |
+| -------------------------------- | -------- | --------------------------------- | ------------------------------------------------------------------------------------ |
+| traefik_namespace                | yes      | traefik                           | Kubernetes namespace                                                                 |
+| traefik_repo_name                | yes      | traefik                           | Helm repository name                                                                 |
+| traefik_repo_url                 | yes      | <https://helm.traefik.io/traefik> | Helm repository URL                                                                  |
+| traefik_repo_version             | yes      | 20.5.0                            | [Helm chart version]                                                                   |
+| traefik_pods                     | no       | 1                                 | Number of pods                                                                       |
+| traefik_hostname                 | yes      | traefik.{{ ansible_domain }}      | Dashboard address                                                                    |
+| traefik_loadbalancer_ip          | no       | First available IP address        | Loadbalancer address for ingress                                                     |
+| traefik_log_level                | no       | error                             | debug, panic, fatal, error, warn, info                                               |
+| traefik_web_user                 | yes      | kangoroo                          | Basic auth user for dashboard                                                        |
+| traefik_web_password             | yes      | jack                              | Basic auth password                                                                  |
+| traefik_web_salt                 | yes      | 65534                             | Salt used to secure the password                                                     |
+| traefik_default_cert_issuer      | yes      | selfsigned-issuer                 | Default certificate issuer                                                           |
+| traefik_default_cert_issuer_kind | yes      | ClusterIssuer                     | Kind of certificate issuer (e.g. Issuer, ClusterIssuer) for the default certificate. |
+| traefik_default_cert_dnsname     | yes      | *.{{ ansible_domain }}            | DNS name issued to the default certificate                                           |
+| traefik_vpn_port                 | no       | 0                                 | Expose VPN port on the given UDP port                                                |
 
 ## Dependencies
 
