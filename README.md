@@ -1,4 +1,6 @@
-# Traefik
+# DEPRECATED: Traefik
+
+***This role will be depreciated use the collection, [rmasters270.kubernetes](https://github.com/rmasters270/ansible-collection-kubernetes).***
 
 Install Traefik on a Kubernetes cluster.
 
